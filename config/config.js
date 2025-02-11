@@ -1,4 +1,4 @@
-export const config = {
+const config = {
   browser: "chrome",
   url: "https://www.saucedemo.com/",
   username: [
@@ -11,3 +11,6 @@ export const config = {
   ],
   password: "secret_sauce",
 };
+
+exports.config = config;
+
