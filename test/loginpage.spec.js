@@ -3,13 +3,15 @@ const {assert} = require('chai')
 const { LoginPage } = require("../pages/loginpage");
 const loginPage = new LoginPage();
 
-describe('Launch App home page', ()=>{
+describe('Login page tests', ()=>{
 
     it('Launch browser', async () =>{
         await loginPage.init_driver();
         await loginPage.enterUsername("standard_user");
         await loginPage.enterPassword("secret_sauce");
         await loginPage.clickLoginBtn();
-       // assert.
-    })
+
+    });
+
+
 })
