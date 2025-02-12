@@ -1,0 +1,12 @@
+package: './package.json'
+parallel: false
+recursive: false
+#reporter: 'spec'
+timeout: '6000'
+reporter : 'mochawesome'
+require: 'mochawesome/register'
+reporter-option: [
+   reportFilename: 'mochawesome-reports',
+   quiet: true,
+   html: true
+]

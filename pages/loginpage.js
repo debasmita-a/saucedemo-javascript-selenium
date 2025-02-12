@@ -1,6 +1,8 @@
 const {Builder, Browser, By, util, until} = require('selenium-webdriver');
 const { BasePage } = require("./basepage");
+const { ElementUtils } = require('../utils/elementUtil');
 const base = new BasePage();
+const ele = new ElementUtils();
 
 class LoginPage extends BasePage{
     
@@ -12,10 +14,13 @@ class LoginPage extends BasePage{
         await driver.wait(until.elementLocated(this.#username), 5000).sendKeys(user_name);
     }
     async enterPassword(pass) {
-        await driver.findElement(this.#password).sendKeys(pass);
+        await ele.getElement(this.#password).sendKeys(pass);
+        //await driver.findElement(this.#password).sendKeys(pass);
     }
     async clickLoginBtn() {
-        await driver.findElement(this.#btnLogin).click();
+        await ele.doClick(this.#btnLogin);
+        //await ele.getElement(this.#btnLogin).click();
+        //await driver.findElement(this.#btnLogin).click();
     }
 
 }
