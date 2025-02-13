@@ -4,6 +4,11 @@ const base = new BasePage();
 
 class ElementUtils {
 
+    driver;
+    constructor(driver){
+        this.driver = driver;
+    }
+
     getElement(locator) {
         return driver.findElement(locator);
     }

@@ -10,3 +10,7 @@ reporter-option: [
    quiet: true,
    html: true
 ]
+file:
+  - './test/setup.js'
+  - './fixtures.cjs'
+extension: ['js', 'cjs', 'mjs']
