@@ -22,7 +22,9 @@ describe.only('End to end tests', ()=>{
         await inventoryPage.addAProductToCart("Sauce Labs Backpack");
         await inventoryPage.navigateToCartPage();
         assert.isTrue(await cartPage.getCartPageURL());
-    })
+    });
+
+    it('User is checks out')
 
 
 })

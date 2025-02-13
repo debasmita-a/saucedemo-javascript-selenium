@@ -15,3 +15,5 @@ const frameworkConstants = {
     CHECKOUT_COMPLETE_MESSAGE : "Thank you for your order!"
 
 }
+
+exports.frameworkConstants = frameworkConstants;

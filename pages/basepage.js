@@ -3,6 +3,7 @@ const {config} = require('../config/config.js');
 
 class BasePage{
 
+    
     constructor(driver){
         global.driver = driver;
     }
