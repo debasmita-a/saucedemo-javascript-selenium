@@ -20,7 +20,7 @@ A Test Automation framework with Selenium WebDriver, Mocha Testing framework, Ch
 
 ## Approach to building the framework :
 The general structure of the framework is very much similar to how we do it using Java and Selenium WebDriver libraries.
-Instead of using a src folder, I have created the pages and test folders directly inside the root folder.
+Instead of using a src folder, I have created the `pages` and `test` folders directly inside the root folder.
 
   
 

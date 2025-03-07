@@ -1,8 +1,14 @@
-const {Builder, Browser, By, util, until} = require('selenium-webdriver');
+const {Builder, Browser, WebDriver} = require('selenium-webdriver');
 const {config} = require('../config/config.js');
 
 class BasePage{
 
+   
+    /**
+     * Description placeholder
+     *
+     * @type {WebDriver | null}
+     */
     driver = null;
 
     async init_driver(){
@@ -15,21 +21,20 @@ class BasePage{
         }else{
             console.log("Please provide a valid browser name.")
         }
-
         await this.driver.get(config.url);
         await this.driver.manage().window().maximize(); 
+        
        }finally{
-        //FIXME : Figure out how to quit session after all tests are executed.
-        console.log("Quitting browser session..");
+      //  console.log("Quitting browser session..");
         //driver.quit(); 
        }
-      return this.driver; 
+      return this.driver;
     }
 
 }
 
-//base = new BasePage();
-//base.init_driver();
+base = new BasePage();
+base.init_driver();
 //base.teardown();
 
 
