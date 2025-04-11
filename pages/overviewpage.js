@@ -22,11 +22,11 @@ class CheckoutOverviewPage extends BasePage{
      */
 
     async getOverviewPageUrl(){
-        return await ele.getThisPageURL();
+        return await this.ele.getThisPageURL();
     }
 
     async getOverviewHeader(){
-        return await ele.getElementText(this.#overviewHeader);
+        return await this.ele.getElementText(this.#overviewHeader);
     }
 
     /**
@@ -43,7 +43,7 @@ class CheckoutOverviewPage extends BasePage{
     }
 
     async clickFinsihBtn(){
-        ele.doClickWithWait(this.#finishBtn, 2000);
+        this.ele.doClickWithWait(this.#finishBtn, 2000);
     }
 }
 

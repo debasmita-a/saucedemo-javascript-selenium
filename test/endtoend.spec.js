@@ -3,11 +3,22 @@ const {assert} = require('chai')
 const { LoginPage } = require("../pages/loginpage");
 const { InventoryPage } = require("../pages/inventorypage");
 const { CartPage } = require("../pages/cartpage");
-const loginPage = new LoginPage();
-const inventoryPage = new InventoryPage();
-const cartPage = new CartPage();
+const { BasePage } = require("../pages/basepage");
+const base = new BasePage();
 
-describe.only('End to end tests', ()=>{
+describe('End to end tests', ()=>{
+
+    let driver;
+    let loginPage;
+    let inventoryPage;
+    let cartPage;
+
+    before('End to end tests set up', async()=>{
+        driver = await base.init_driver();
+        loginPage = new LoginPage(driver);
+        inventoryPage = new InventoryPage(driver);
+        cartPage = new CartPage(driver);
+    });
 
     it('User logs in successfully', async ()=>{
         await loginPage.init_driver();
@@ -23,8 +34,5 @@ describe.only('End to end tests', ()=>{
         await inventoryPage.navigateToCartPage();
         assert.isTrue(await cartPage.getCartPageURL());
     });
-
-    it('User is checks out')
-
 
 })

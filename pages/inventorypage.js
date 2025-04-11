@@ -1,7 +1,5 @@
-const { ElementUtils } = require("../utils/elementUtil");
 const { BasePage } = require("./basepage");
 const {By, until} = require('selenium-webdriver');
-const ele = new ElementUtils();
 
 class InventoryPage extends BasePage{
 
@@ -32,7 +30,7 @@ class InventoryPage extends BasePage{
     async addAProductToCart(productname){
         let id = this.addToCartID(productname);
         console.log(id);
-        ele.doClickWithWait(By.id(id), 2000); //cart badge number should change
+        this.ele.doClickWithWait(By.id(id), 2000); //cart badge number should change
     }
 /**
  * @param {testdata array from a json file} data 
@@ -42,40 +40,40 @@ class InventoryPage extends BasePage{
     async addProductsToCart(data){
         data.forEach(element => {
             let id = this.addToCartID(element);
-            ele.doClickWithWait(By.id(id), 2000);
+            this.ele.doClickWithWait(By.id(id), 2000);
         });
     }
 
     async getProductPageHeader(){
-        return await ele.getElementWithWait(this.#headerText, 3000).getText();
+        return await this.ele.getElementTextWithWait(this.#headerText, 3000);
     }
 
     async getDefaultFilterName(){
-        return await ele.getElementWithWait(this.#filterDropdown, 2000).getText(); 
+        return await this.ele.getElementWithWait(this.#filterDropdown, 2000); 
     }
 
     async navigateToAboutPage(){
-        ele.doClickWithWait(this.#burgerMenuBtn, 2000);
-        ele.doClickWithWait(this.#aboutLink, 2000); 
+        this.ele.doClickWithWait(this.#burgerMenuBtn, 2000);
+        this.ele.doClickWithWait(this.#aboutLink, 2000); 
         //validate here. -- About page
         driver.navigate().back();
     }
 
     async getProductPageURL(){
-        return await ele.getThisPageURL();
+        return await this.ele.getThisPageURL();
     }
 
     async doLogout(){
-        ele.doClickWithWait(this.#burgerMenuBtn, 2000);
-        ele.doClickWithWait(this.#logoutLink, 2000);
+        this.ele.doClickWithWait(this.#burgerMenuBtn, 2000);
+        this.ele.doClickWithWait(this.#logoutLink, 2000);
     }
 
     async navigateToCartPage(){
-        ele.doClickWithWait(this.#cartLink, 2000);
+        this.ele.doClickWithWait(this.#cartLink, 2000);
     }
 
     async getFooterText(){
-        await ele.getElementText(this.#footerText);
+        await this.ele.getElementText(this.#footerText);
     }
 }
 

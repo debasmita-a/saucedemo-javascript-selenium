@@ -1,74 +1,76 @@
-const {By, until} = require('selenium-webdriver');
-const { BasePage } = require('../pages/basepage');
-const base = new BasePage();
+const {By, until, wait} = require('selenium-webdriver');
 
 class ElementUtils {
 
-    driver;
     constructor(driver){
         this.driver = driver;
     }
 
-    getElement(locator) {
-        return driver.findElement(locator);
+    async getElement(locator) {
+        return await this.driver.findElement(locator);
     }
 
-    getElementWithWait(locator, timeout) {
-        return driver.wait(until.elementLocated(locator), timeout);
+    async getElementWithWait(locator, timeout) {
+        return await this.driver.wait(until.elementLocated(locator), timeout);
     }
 
-    getElements(locator){
-        return driver.findElements(locator);
+    async getElements(locator){
+        return await this.driver.findElements(locator);
     }
 
-    doClick(locator){
-        this.getElement(locator).click();
+    async doClick(locator){
+        await this.getElement(locator).click();
     }
 
-    doSendKeys(locator, value){
-        this.getElement(locator).sendKeys(value);
+    async doSendKeys(locator, value){
+        await this.getElement(locator).sendKeys(value);
     }
 
-    doClickWithWait(locator, timeout){
-        driver.wait(until.elementLocated(locator), timeout).click();
+    async doClickWithWait(locator, timeout){
+        const element = await this.getElementWithWait(locator, timeout);
+        await element.click();
     }
 
-    doSendKeysWithWait(locator, value, timeout){
-        driver.wait(until.elementLocated(locator), timeout).sendKeys(value);
+    async doSendKeysWithWait(locator, value, timeout){
+        await this.driver.wait(until.elementLocated(locator), timeout).sendKeys(value);
     }
 
-    isElementDisplayed(locator){
-        return this.getElement(locator).isDisplayed();
+    async isElementDisplayed(locator){
+        return await this.getElement(locator).isDisplayed();
     }
 
-    isElementEnabled(locator){
-        return this.getElement(locator).isEnabled();
+    async isElementEnabled(locator){
+        return await this.getElement(locator).isEnabled();
     }
 
-    getPageTitle(){
-        return driver.getTitle();
+    async getPageTitle(){
+        return await this.driver.getTitle();
     }
 
-    getThisPageURL(){
-        return driver.getCurrentUrl();
+    async getThisPageURL(){
+        return await this.driver.getCurrentUrl();
     }
 
-    getThisPageUrlWithWait(suburl){
-        return driver.wait(until.urlContains(suburl));
+    async getThisPageUrlWithWait(suburl){
+        const isSubUrlAvailable = await this.driver.wait(until.urlContains(suburl));
+        return isSubUrlAvailable;
     }
 
-    getElementAttributeValue(locator, attributeName){
-        return this.getElement(locator).getAttribute(attributeName)
+    async getElementAttributeValue(locator, attributeName){
+        return await this.getElement(locator).getAttribute(attributeName)
     }
 
-    getElementText(locator){
-        return this.getElement(locator).getText();
+    async getElementText(locator){
+        return await this.getElement(locator).getText();
+    }
+
+    async getElementTextWithWait(locator, timeout){
+        const element = await this.getElementWithWait(locator, timeout);
+        return await element.getText();
     }
 
    
 }
-
-//util = new ElementUtils();
 
 exports.ElementUtils = ElementUtils;
 

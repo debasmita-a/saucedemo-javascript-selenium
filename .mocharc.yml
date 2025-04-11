@@ -1,5 +1,5 @@
 package: './package.json'
-parallel: false
+parallel: true
 recursive: false
 #reporter: 'spec'
 timeout: '6000'
@@ -10,7 +10,5 @@ reporter-option: [
    quiet: true,
    html: true
 ]
-file:
-  - './test/setup.js'
-  - './fixtures.cjs'
+
 extension: ['js', 'cjs', 'mjs']

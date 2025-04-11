@@ -1,15 +1,19 @@
 const {Builder, Browser, WebDriver} = require('selenium-webdriver');
 const {config} = require('../config/config.js');
+const { ElementUtils } = require('../utils/elementUtil.js')
 
 class BasePage{
-
-   
+  
     /**
      * Description placeholder
      *
      * @type {WebDriver | null}
      */
-    driver = null;
+
+    constructor(driver) {
+        this.driver = driver;
+        this.ele = new ElementUtils(driver);
+    }
 
     async init_driver(){
        try{
@@ -30,12 +34,6 @@ class BasePage{
        }
       return this.driver;
     }
-
 }
-
-base = new BasePage();
-base.init_driver();
-//base.teardown();
-
 
 exports.BasePage = BasePage;

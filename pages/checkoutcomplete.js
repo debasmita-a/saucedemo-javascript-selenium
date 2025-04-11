@@ -13,15 +13,15 @@ class CheckoutCompletePage extends BasePage{
     #backToProductsPage = By.id("back-to-products");
 
     async getCheckoutCompletePageUrl(){
-        return await ele.getThisPageURL();
+        return await this.ele.getThisPageURL();
     }
 
     async getCheckoutCompletePageHeader(){
-        return await ele.getElementText(this.getCheckoutCompletePageHeader());
+        return await this.ele.getElementText(this.getCheckoutCompletePageHeader());
     }
 
     async getCheckoutSuccessMessage(){
-        return await ele.getElementText(this.#thankyouMsg);
+        return await this.ele.getElementText(this.#thankyouMsg);
     }
 
     async navigateToProductsPage(){
@@ -30,7 +30,7 @@ class CheckoutCompletePage extends BasePage{
     }
 
     async getCartBadgeNumber(){
-        let items = ele.getElements(this.getCartBadgeNumber());
+        let items = this.ele.getElements(this.getCartBadgeNumber());
         return items == 0; 
     }
 }
